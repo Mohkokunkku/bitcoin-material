@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   card: {
@@ -17,24 +18,24 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CryptoCard(name) {
+export default function CryptoCard(name, info, id, img) {
   const classes = useStyles();
-
+    console.log(name);
   return (
+      <Grid item xs={6}>
     <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png"
-          title={name}
+          image={name.image}
+          title={name.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            BITCOIN
+          <Typography gutterBottom variant="h5" component="h2" gutterBottom>
+            {name.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Bitcoin on suurin ja käytetyin kryptovaluutta.
-             Bitcoin julkaistiin vuonna 2009 ja ensimmäisen kryptovaluutan keksijänä on mystinen Satoshi, jonka henkilöllisyyttä ei tunneta.
+                {name.info}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -47,5 +48,6 @@ export default function CryptoCard(name) {
         </Button>
       </CardActions>
     </Card>
+    </Grid>
   );
 }
